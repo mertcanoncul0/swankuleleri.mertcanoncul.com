@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SWAN Kuleleri - Kart Oyunu</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>SWAN Kuleleri</h1>
+        <p class="subtitle">Kart Oyununun Cevap Anahtarı</p>
+
+        <footer>
+          <div class="footer-content">
+            <p class="footer-title">Dijital Oyun Tasarımı Öğrencileri</p>
+            <p class="footer-copyright">
+              Firdevs Güngör, Baran Emir Belhaj, Mertcan Öncül
+            </p>
+          </div>
+        </footer>
+      </header>
+
+      <div class="search-section">
+        <div class="search-header">
+          <h2>Kartınızı Seçin</h2>
+          <p class="search-description">
+            1-60 arası bir numara girerek kartınızı keşfedin
+          </p>
+        </div>
+        <div class="search-box">
+          <div class="input-wrapper">
+            <span class="search-icon">#</span>
+            <input
+              type="number"
+              id="searchInput"
+              min="1"
+              max="60"
+              placeholder="Kart No (1-60)"
+              maxlength="2"
+              autocomplete="off"
+            />
+            <button id="clearBtn" class="clear-icon" title="Temizle">✕</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="cards-container" id="cardsContainer">
+        <!-- Kartlar buraya dinamik olarak eklenecek -->
+      </div>
+
+      <div class="no-results" id="noResults" style="display: none">
+        <p>
+          En fazla 60 kart var
+          <span style="color: orange; font-size: 32px"> Mustafa </span>
+          <span style="color: red; font-size: 32px"> Akbaş </span>
+        </p>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
