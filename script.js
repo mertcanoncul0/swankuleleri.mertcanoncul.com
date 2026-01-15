@@ -407,8 +407,18 @@ function displayCards(cardsToShow) {
 
 // Kart elementi oluştur
 function createCardElement(card) {
+  // Determine level by card number to ensure color ranges: 1-20 basit, 21-40 orta, 41-60 zor
+  function getSeviyeFromNumber(n) {
+    if (n >= 1 && n <= 20) return "basit";
+    if (n >= 21 && n <= 40) return "orta";
+    if (n >= 41 && n <= 60) return "zor";
+    return card.seviye || "basit";
+  }
+
+  const seviye = getSeviyeFromNumber(card.sayi);
+
   const cardDiv = document.createElement("div");
-  cardDiv.className = `card card-${card.seviye}`;
+  cardDiv.className = `card card-${seviye}`;
 
   // Seviye rozeti
   const seviyeLabels = {
@@ -418,19 +428,13 @@ function createCardElement(card) {
   };
 
   cardDiv.innerHTML = `
-        <div class="card-number card-number-${card.seviye}">${card.sayi}</div>
-        <div class="card-seviye-badge seviye-${card.seviye}">${
-    seviyeLabels[card.seviye]
-  }</div>
+        <div class="card-number card-number-${seviye}">${card.sayi}</div>
+        <div class="card-seviye-badge seviye-${seviye}">${seviyeLabels[seviye]}</div>
         <div class="card-content">
             <div class="card-label">Soru</div>
-            <div class="card-question card-question-${card.seviye}">${
-    card.soru
-  }</div>
+            <div class="card-question card-question-${seviye}">${card.soru}</div>
             <div class="card-label">Cevap</div>
-            <div class="card-answer card-answer-${card.seviye}" id="answer-${
-    card.sayi
-  }">${card.cevap}</div>
+            <div class="card-answer card-answer-${seviye}" id="answer-${card.sayi}">${card.cevap}</div>
         </div>
     `;
 
@@ -514,4 +518,49 @@ window.addEventListener("DOMContentLoaded", () => {
   cardsContainer.innerHTML = "";
   noResults.style.display = "none";
   updateClearButton();
+});
+
+// Nasıl oynanır modal kontrolü
+const howBtn = document.getElementById("howBtn");
+const howModal = document.getElementById("howModal");
+const howClose = document.getElementById("howClose");
+
+function openHowModal() {
+  if (!howModal) return;
+  howModal.classList.add("active");
+  howModal.setAttribute("aria-hidden", "false");
+  document.body.style.overflow = "hidden";
+}
+
+function closeHowModal() {
+  if (!howModal) return;
+  howModal.classList.remove("active");
+  howModal.setAttribute("aria-hidden", "true");
+  document.body.style.overflow = "";
+}
+
+if (howBtn) {
+  howBtn.addEventListener("click", openHowModal);
+  howBtn.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      openHowModal();
+    }
+  });
+}
+
+if (howClose) howClose.addEventListener("click", closeHowModal);
+
+// Close when clicking overlay background
+if (howModal) {
+  howModal.addEventListener("click", (e) => {
+    if (e.target === howModal) closeHowModal();
+  });
+}
+
+// Close on Escape
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && howModal && howModal.classList.contains("active")) {
+    closeHowModal();
+  }
 });

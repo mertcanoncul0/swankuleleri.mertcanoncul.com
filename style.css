@@ -403,7 +403,7 @@ header h1 {
 }
 
 .seviye-zor {
-  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  background: linear-gradient(135deg, #ff4d4d 0%, #ff0000 100%);
   color: white;
 }
 
@@ -448,13 +448,13 @@ header h1 {
 
 /* Zor seviye - Kırmızı */
 .card-number-zor {
-  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
-  box-shadow: 0 5px 15px rgba(239, 68, 68, 0.4);
+  background: linear-gradient(135deg, #ff4d4d 0%, #ff0000 100%);
+  box-shadow: 0 5px 15px rgba(255, 0, 0, 0.45);
 }
 
 .card:hover .card-number-zor {
   transform: rotate(360deg) scale(1.1);
-  box-shadow: 0 8px 20px rgba(239, 68, 68, 0.5);
+  box-shadow: 0 8px 20px rgba(255, 0, 0, 0.55);
 }
 
 .card-content {
@@ -493,8 +493,8 @@ header h1 {
 }
 
 .card-question-zor {
-  background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
-  border-left-color: #ef4444;
+  background: linear-gradient(135deg, #fff0f0 0%, #ffdede 100%);
+  border-left-color: #ff0000;
 }
 
 .card-question::before {
@@ -791,6 +791,7 @@ header h1 {
 /* Footer */
 footer {
   margin-top: 50px;
+  margin-bottom: 20px;
   padding: 30px 20px;
   background: linear-gradient(
     135deg,
@@ -1022,9 +1023,9 @@ footer {
 }
 
 .badge-zor {
-  background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
-  color: #991b1b;
-  border: 1px solid #ef4444;
+  background: linear-gradient(135deg, #ffecec 0%, #ffd6d6 100%);
+  color: #7a0000;
+  border: 1px solid #ff0000;
 }
 
 /* Story Content */
@@ -1131,5 +1132,72 @@ footer {
 
   .item-content span {
     font-size: 14px;
+  }
+}
+
+.hows-played {
+  text-decoration: underline;
+  cursor: pointer;
+  transition: color 125ms ease-in-out;
+  color: #2563eb; /* Tema mavisine çevrildi */
+}
+
+.story-btn {
+  text-decoration: underline;
+  cursor: pointer;
+  transition: color 125ms ease-in-out;
+  color: #1e3a8a;
+  margin-left: 12px;
+}
+
+/* Header icon buttons (Hikaye ve Nasıl Oynanır) */
+.header {
+  position: relative;
+}
+
+.icon-btn {
+  position: absolute;
+  top: 18px;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  transition: transform 140ms ease, box-shadow 140ms ease;
+  z-index: 60;
+}
+
+.icon-left {
+  left: 16px;
+  color: #1e3a8a; /* Tema koyu mavi */
+}
+
+.icon-right {
+  right: 16px;
+  color: #2563eb; /* Tema mavi */
+}
+
+.icon-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 36px rgba(37, 99, 235, 0.12);
+}
+
+@media (max-width: 768px) {
+  .icon-btn {
+    top: 12px;
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+
+  .icon-left {
+    left: 10px;
+  }
+  .icon-right {
+    right: 10px;
   }
 }
